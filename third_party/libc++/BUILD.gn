@@ -13,6 +13,8 @@ config("config") {
     # libc++ wants to redefine the macros WIN32_LEAN_AND_MEAN and _CRT_RAND_S in
     # its implementation.
     cflags += [ "-Wno-macro-redefined" ]
+  } else if (is_bsd) {
+    cflags += [ "-fPIC", "-I/usr/local/include" ]
   } else {
     cflags += [ "-fPIC" ]
   }
